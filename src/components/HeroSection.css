@@ -8,68 +8,33 @@
   color: white;
 }
 
-/* ── Animated Gradient Background ─────────────── */
-.hero-gradient-bg {
+/* ── Background Image Slider ───────────────────── */
+.hero-bg-image {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg,
-    #0f0c29 0%,
-    #1a1040 25%,
-    #24143f 50%,
-    #0d1b3e 75%,
-    #0f0c29 100%
-  );
-  background-size: 300% 300%;
-  animation: gradientShift 10s ease infinite;
+  background-size: cover;
+  background-position: center;
   z-index: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+  transform: scale(1.05);
 }
 
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.hero-bg-image.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
-/* ── Floating Orbs ─────────────────────────────── */
-.hero-orb {
+.hero-overlay {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
-  z-index: 0;
-  animation: floatOrb 8s ease-in-out infinite;
-}
-
-.orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #7c6cf0, transparent 70%);
-  top: -100px;
-  right: -100px;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #b89af5, transparent 70%);
-  bottom: -80px;
-  left: -80px;
-  animation-delay: -3s;
-}
-
-.orb-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, #f5a0c8, transparent 70%);
-  top: 40%;
-  left: 40%;
-  animation-delay: -5s;
-}
-
-@keyframes floatOrb {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50%       { transform: translateY(-30px) scale(1.05); }
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.45) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  z-index: 1;
 }
 
 /* ── Hero Content ──────────────────────────────── */
@@ -148,7 +113,7 @@
   height: 40px;
   border-radius: 50%;
   background: linear-gradient(135deg, #7c6cf0, #b89af5);
-  border: 2px solid rgba(255,255,255,0.4);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   margin-left: -15px;
 }
 
@@ -182,7 +147,4 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  .orb-1 { width: 300px; height: 300px; }
-  .orb-2 { width: 250px; height: 250px; }
-  .orb-3 { width: 200px; height: 200px; }
 }
