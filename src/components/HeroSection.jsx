@@ -2,22 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Star } from 'lucide-react';
 import './HeroSection.css';
 
-// Hero background images
-import hero4 from '../assets/images/hero-4.jpeg';
-import hero7 from '../assets/images/hero-7.jpeg';
-
-const backgrounds = [hero4, hero7];
-
 const typeWriterMessages = [
-  "Partner with Isomer Events Planer in Kerala",
+  "Plan Your Entire Event In One Place",
   "Plan your dream wedding with top professionals",
   "Organize corporate events seamlessly",
   "The ultimate platform for any celebration"
 ];
 
 const HeroSection = () => {
-  const [currentBg, setCurrentBg] = useState(0);
-  
   // Typewriter state
   const [text, setText] = useState('');
   const [msgIndex, setMsgIndex] = useState(0);
@@ -49,25 +41,15 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [text, isDeleting, msgIndex]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBg((prev) => (prev + 1) % backgrounds.length);
-    }, 5000); // Change image every 5 seconds
-    
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="hero-section">
-      {backgrounds.map((bg, index) => (
-        <div 
-          key={index}
-          className={`hero-bg-image ${index === currentBg ? 'active' : ''}`}
-          style={{ backgroundImage: `url(${bg})` }}
-        />
-      ))}
-      <div className="hero-overlay"></div>
-      
+      {/* Animated gradient background */}
+      <div className="hero-gradient-bg" />
+      {/* Floating decorative orbs */}
+      <div className="hero-orb orb-1" />
+      <div className="hero-orb orb-2" />
+      <div className="hero-orb orb-3" />
+
       <div className="container hero-container animate-fade-in-up">
         <div className="hero-content-left">
           <p className="hero-subtitle text-gradient">KERALA'S EXCLUSIVE EVENT COMPANY</p>
