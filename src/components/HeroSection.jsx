@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Star } from 'lucide-react';
 import './HeroSection.css';
 
-// Import the newly extracted images
+// Hero background images (removed overhead & arch shots per user request)
 import hero1 from '../assets/images/hero-1.jpeg';
-import hero2 from '../assets/images/hero-2.jpeg';
-import hero3 from '../assets/images/hero-3.jpeg';
 import hero4 from '../assets/images/hero-4.jpeg';
+import hero5 from '../assets/images/hero-5.jpeg';
+import hero6 from '../assets/images/hero-6.jpeg';
+import hero7 from '../assets/images/hero-7.jpeg';
 
-const backgrounds = [hero1, hero2, hero3, hero4];
+const backgrounds = [hero1, hero4, hero5, hero6, hero7];
 
 const typeWriterMessages = [
   "Partner with Isomer Events Planer in Kerala",
