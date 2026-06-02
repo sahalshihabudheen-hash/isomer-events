@@ -7,7 +7,7 @@
   position: relative;
   max-width: 900px;
   margin: 0 auto;
-  margin-top: -40px; /* Overlap hero */
+  margin-top: -15px; /* Overlap hero slightly */
   z-index: 10;
   padding: 0 1.5rem;
 }
