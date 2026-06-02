@@ -11,7 +11,7 @@ import hero4 from '../assets/images/hero-4.jpeg';
 const backgrounds = [hero1, hero2, hero3, hero4];
 
 const typeWriterMessages = [
-  "Partner with Melodia Event Management in Kerala",
+  "Partner with Isomer Events Planer in Kerala",
   "Plan your dream wedding with top professionals",
   "Organize corporate events seamlessly",
   "The ultimate platform for any celebration"
@@ -72,7 +72,7 @@ const HeroSection = () => {
       
       <div className="container hero-container animate-fade-in-up">
         <div className="hero-content-left">
-          <p className="hero-subtitle text-gradient">KERALA'S #1 EXCLUSIVE EVENT COMPANY</p>
+          <p className="hero-subtitle text-gradient">KERALA'S EXCLUSIVE EVENT COMPANY</p>
           
           <h1 className="hero-title typewriter-text">
             {text}<span className="cursor">|</span>
