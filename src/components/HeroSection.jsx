@@ -10,8 +10,46 @@ import hero4 from '../assets/images/hero-4.jpeg';
 
 const backgrounds = [hero1, hero2, hero3, hero4];
 
+const typeWriterMessages = [
+  "Partner with Melodia Event Management in Kerala",
+  "Plan your dream wedding with top professionals",
+  "Organize corporate events seamlessly",
+  "The ultimate platform for any celebration"
+];
+
 const HeroSection = () => {
   const [currentBg, setCurrentBg] = useState(0);
+  
+  // Typewriter state
+  const [text, setText] = useState('');
+  const [msgIndex, setMsgIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const typingSpeed = 100;
+  const deletingSpeed = 50;
+  const pauseTime = 2000;
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentMsg = typeWriterMessages[msgIndex];
+      
+      if (isDeleting) {
+        setText(currentMsg.substring(0, text.length - 1));
+        if (text.length === 0) {
+          setIsDeleting(false);
+          setMsgIndex((prev) => (prev + 1) % typeWriterMessages.length);
+        }
+      } else {
+        setText(currentMsg.substring(0, text.length + 1));
+        if (text.length === currentMsg.length) {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+          return;
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, msgIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,10 +74,8 @@ const HeroSection = () => {
         <div className="hero-content-left">
           <p className="hero-subtitle text-gradient">KERALA'S #1 EXCLUSIVE EVENT COMPANY</p>
           
-          <h1 className="hero-title">
-            Partner with Melodia<br />
-            Event Management in<br />
-            Kerala
+          <h1 className="hero-title typewriter-text">
+            {text}<span className="cursor">|</span>
           </h1>
           
           <div className="hero-actions-row">
