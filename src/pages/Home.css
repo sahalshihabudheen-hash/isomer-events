@@ -1,0 +1,48 @@
+.home-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.search-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: -40px; /* Overlap hero */
+  z-index: 10;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 0;
+  }
+  
+  .search-container {
+    margin-top: -20px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
