@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, MapPin, ChevronRight, Search, Filter, Utensils, ExternalLink } from 'lucide-react';
+import { Star, MapPin, ChevronRight, Search, Filter, Utensils, ExternalLink, ShoppingCart } from 'lucide-react';
 import './CateringPage.css';
 
 // Evenzo Events logo from Instagram
@@ -139,46 +139,63 @@ const CateringPage = () => {
           </div>
 
           <div className="provider-list">
-            {filteredProviders.map((provider) => (
-              <div
-                key={provider.id}
-                className={`provider-card ${selectedProvider === provider.name ? 'active' : ''} ${provider.externalUrl ? 'has-link' : ''}`}
-                onClick={() => {
-                  if (provider.externalUrl) {
-                    window.open(provider.externalUrl, '_blank', 'noopener,noreferrer');
-                  } else {
-                    setSelectedProvider(selectedProvider === provider.name ? null : provider.name);
-                  }
-                }}
-              >
-                <div className="provider-card-top">
-                  <div className="provider-avatar">
-                    {provider.name === 'Evenzo Events' ? (
-                      <img src={EVENZO_LOGO} alt="Evenzo" className="provider-logo-img" />
-                    ) : (
-                      provider.name.charAt(0)
-                    )}
-                  </div>
-                  <div className="provider-info">
-                    <div className="provider-name-row">
-                      <h4>{provider.name}</h4>
-                      {provider.verified && <span className="verified-badge">✓</span>}
-                      {provider.externalUrl && <ExternalLink size={13} className="provider-ext-icon" />}
+            {filteredProviders.map((provider) => {
+              const cardContent = (
+                <>
+                  <div className="provider-card-top">
+                    <div className="provider-avatar">
+                      {provider.name === 'Evenzo Events' ? (
+                        <img src={EVENZO_LOGO} alt="Evenzo" className="provider-logo-img" />
+                      ) : (
+                        provider.name.charAt(0)
+                      )}
                     </div>
-                    <p className="provider-specialty">{provider.specialty}</p>
+                    <div className="provider-info">
+                      <div className="provider-name-row">
+                        <h4>{provider.name}</h4>
+                        {provider.verified && <span className="verified-badge">✓</span>}
+                        {provider.externalUrl && <ExternalLink size={13} className="provider-ext-icon" />}
+                      </div>
+                      <p className="provider-specialty">{provider.specialty}</p>
+                    </div>
                   </div>
+                  <div className="provider-card-bottom">
+                    <span className="provider-location"><MapPin size={12} /> {provider.location}</span>
+                    <span className="provider-rating"><Star size={12} fill="currentColor" /> {provider.rating} ({provider.reviews})</span>
+                  </div>
+                  <div className="provider-price">{provider.price}</div>
+                  {provider.externalUrl
+                    ? <ExternalLink size={16} className="provider-arrow" />
+                    : <ChevronRight size={16} className="provider-arrow" />
+                  }
+                </>
+              );
+
+              if (provider.externalUrl) {
+                return (
+                  <a
+                    key={provider.id}
+                    href={provider.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`provider-card has-link ${selectedProvider === provider.name ? 'active' : ''}`}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    {cardContent}
+                  </a>
+                );
+              }
+
+              return (
+                <div
+                  key={provider.id}
+                  className={`provider-card ${selectedProvider === provider.name ? 'active' : ''}`}
+                  onClick={() => setSelectedProvider(selectedProvider === provider.name ? null : provider.name)}
+                >
+                  {cardContent}
                 </div>
-                <div className="provider-card-bottom">
-                  <span className="provider-location"><MapPin size={12} /> {provider.location}</span>
-                  <span className="provider-rating"><Star size={12} fill="currentColor" /> {provider.rating} ({provider.reviews})</span>
-                </div>
-                <div className="provider-price">{provider.price}</div>
-                {provider.externalUrl
-                  ? <ExternalLink size={16} className="provider-arrow" />
-                  : <ChevronRight size={16} className="provider-arrow" />
-                }
-              </div>
-            ))}
+              );
+            })}
           </div>
         </aside>
 
@@ -219,7 +236,9 @@ const CateringPage = () => {
                   </div>
                   <div className="pkg-actions">
                     <span className="pkg-rating"><Star size={13} fill="var(--warning)" color="var(--warning)" /> {pkg.rating}</span>
-                    <button className="btn btn-primary">Book Now</button>
+                    <button className="btn btn-primary add-to-cart-btn">
+                      <ShoppingCart size={15} /> Add to Cart
+                    </button>
                   </div>
                 </div>
               </div>

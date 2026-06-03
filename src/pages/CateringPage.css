@@ -480,3 +480,10 @@
     gap: 1.5rem;
   }
 }
+
+/* ── Add to Cart button ───────────────────────── */
+.add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}

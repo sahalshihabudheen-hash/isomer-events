@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Sun, Moon, Menu, X, User } from 'lucide-react';
 import './Navbar.css';
 
@@ -17,6 +17,11 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('/');
+  const location = useLocation();
+
+  // Only be transparent on the homepage; all other pages get solid navbar
+  const isHome = location.pathname === '/';
+  const isSolid = !isHome || isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +32,7 @@ const Navbar = ({ theme, toggleTheme }) => {
   }, []);
 
   return (
-    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`navbar ${isSolid ? 'scrolled' : ''}`}>
       <div className="navbar-inner">
         {/* Logo */}
         <Link to="/" className="navbar-logo" onClick={() => setActiveLink('/')}>
