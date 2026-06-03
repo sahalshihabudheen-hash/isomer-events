@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Utensils, 
   CalendarCheck, 
@@ -15,20 +16,22 @@ import {
 import './CategoriesGrid.css';
 
 const categories = [
-  { name: 'Catering', icon: Utensils, count: '1,240+' },
-  { name: 'Event Management', icon: CalendarCheck, count: '850+' },
-  { name: 'Stage Teams', icon: Tent, count: '420+' },
-  { name: 'Photography', icon: Camera, count: '2,100+' },
-  { name: 'Videography', icon: Video, count: '1,500+' },
-  { name: 'Light & Sound', icon: Music, count: '630+' },
-  { name: 'Car Rentals', icon: Car, count: '340+' },
-  { name: 'Travel Packages', icon: Plane, count: '280+' },
-  { name: 'Dress Rentals', icon: Shirt, count: '920+' },
-  { name: 'Makeup Artists', icon: Sparkles, count: '1,800+' },
-  { name: 'Decorators', icon: Palette, count: '1,150+' },
+  { name: 'Catering', icon: Utensils, count: '1,240+', path: '/catering' },
+  { name: 'Event Management', icon: CalendarCheck, count: '850+', path: '/services/event-management' },
+  { name: 'Stage Teams', icon: Tent, count: '420+', path: '/services/stage-teams' },
+  { name: 'Photography', icon: Camera, count: '2,100+', path: '/photography' },
+  { name: 'Videography', icon: Video, count: '1,500+', path: '/services/videography' },
+  { name: 'Light & Sound', icon: Music, count: '630+', path: '/services/light-sound' },
+  { name: 'Car Rentals', icon: Car, count: '340+', path: '/services/car-rentals' },
+  { name: 'Travel Packages', icon: Plane, count: '280+', path: '/packages' },
+  { name: 'Dress Rentals', icon: Shirt, count: '920+', path: '/services/dress-rentals' },
+  { name: 'Makeup Artists', icon: Sparkles, count: '1,800+', path: '/services/makeup' },
+  { name: 'Decorators', icon: Palette, count: '1,150+', path: '/decor' },
 ];
 
 const CategoriesGrid = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="categories-section">
       <div className="container">
@@ -43,7 +46,12 @@ const CategoriesGrid = () => {
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <div key={index} className="category-card hover-lift glass-panel">
+              <div
+                key={index}
+                className="category-card hover-lift glass-panel"
+                onClick={() => navigate(category.path)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="category-icon-wrapper">
                   <Icon size={28} className="category-icon text-gradient" />
                 </div>

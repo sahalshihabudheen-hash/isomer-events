@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import UserDashboard from './pages/UserDashboard';
 import ProviderDashboard from './pages/ProviderDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import CateringPage from './pages/CateringPage';
 import './App.css';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/catering" element={<CateringPage />} />
             <Route path="/dashboard/user/*" element={<UserDashboard />} />
             <Route path="/dashboard/provider/*" element={<ProviderDashboard />} />
             <Route path="/dashboard/admin/*" element={<AdminDashboard />} />
