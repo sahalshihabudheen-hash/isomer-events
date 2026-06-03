@@ -6,7 +6,7 @@ import './CateringPage.css';
 const EVENZO_LOGO = 'https://instagram.fccj8-1.fna.fbcdn.net/v/t51.71878-15/54001_3oNHRt0p9euGm7OWb1P806n8ad1BL6XamSce-6A25D5188_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEwODAuc2RyLmYzMTQ3OCJ9&_nc_ht=instagram.fccj8-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QHoBoMvvCCmCpAoAe2VZJHDa5BX7rHW_yJN0mFWm3VhBP2S7ZX9fP8&_nc_ohc=3cewMJEVr44Q7kNvwHgRMh6&_nc_gid=xPdipGo_y972fbf_x10w94by_x1qh985_x14e422d_xk390pu_x5yr21d_x.ak_x11xv1r_xexx8yu_xyr12b_x18d9169_x1c1uobl_x11njtxf_xh8yej3&oh=00_AfBuYs0UPO8qH1A5A5JuHl3DKqGi5DhDQC4d7rL3g&oe=6A25D518';
 
 const providers = [
-  { id: 1, name: 'Evenzo Events', location: 'Kozhikode, Kerala', rating: 4.9, reviews: 312, specialty: 'Wedding & Corporate', verified: true, price: '₹500/plate', externalUrl: 'https://www.instagram.com/evenzo_events/' },
+  { id: 1, name: 'Evenzo Events', location: 'Kozhikode, Kerala', rating: 4.9, reviews: 312, specialty: 'Wedding & Corporate', verified: true, price: '₹500/plate', externalUrl: null },
   { id: 2, name: 'Royal Feast Catering', location: 'Kochi, Kerala', rating: 4.8, reviews: 245, specialty: 'Kerala Sadya', verified: true, price: '₹350/plate', externalUrl: null },
   { id: 3, name: 'Spice Garden Caterers', location: 'Thrissur, Kerala', rating: 4.7, reviews: 189, specialty: 'Multi-cuisine', verified: true, price: '₹420/plate', externalUrl: null },
   { id: 4, name: 'Kerala Kitchen Co.', location: 'Kannur, Kerala', rating: 4.6, reviews: 156, specialty: 'Traditional Kerala', verified: false, price: '₹280/plate', externalUrl: null },
